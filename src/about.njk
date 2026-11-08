@@ -1,0 +1,51 @@
+---
+layout: base.njk
+navKey: about
+title: About
+description: Why I created the Skin and Mind Project.
+permalink: /about/
+---
+{% set about = pages.about %}
+
+<section class="section">
+  <div class="wrap">
+    <div class="split">
+      <div class="frame portrait">
+        {% if about.portrait %}
+        <img src="{{ about.portrait }}" alt="Portrait">
+        {% else %}
+        <svg viewBox="0 0 400 500" role="img" aria-label="Placeholder portrait">
+          <rect width="400" height="500" fill="#F3DDD5"/>
+          <g font-family="Montserrat, sans-serif" font-size="10" letter-spacing="4" fill="#2E2724" opacity=".4">
+            <text x="126" y="256">ADD A PHOTO</text>
+          </g>
+        </svg>
+        {% endif %}
+      </div>
+      <div>
+        <h1 class="h-xl">{{ about.heading }}</h1>
+        <p class="lede" style="margin-top:20px">{{ about.intro }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section paper">
+  <div class="wrap narrow">
+    {% for s in about.sections %}
+    <div class="qa">
+      <h3>{{ s.heading }}</h3>
+      <p>{{ s.text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section blush">
+  <div class="wrap">
+    <div class="section-head center"><h2 class="h-xl">What I&#8217;m Exploring</h2></div>
+    <ul class="tags" style="justify-content:center">
+      {% for t in about.topics %}<li>{{ t }}</li>{% endfor %}
+    </ul>
+  </div>
+</section>

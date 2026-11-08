@@ -1,0 +1,157 @@
+backend:
+  name: github
+  repo: chloesdesigns/skin-and-mind-site
+  branch: main
+
+media_folder: "src/uploads"
+public_folder: "/uploads"
+
+publish_mode: simple
+
+collections:
+  # ---------------------------------------------------------------- blog
+  - name: posts
+    label: "Blog Posts"
+    label_singular: "Blog Post"
+    folder: "src/posts"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { name: title, label: "Title", widget: string }
+      - { name: date, label: "Date", widget: datetime, format: "YYYY-MM-DD" }
+      - name: category
+        label: "Category"
+        widget: select
+        options: ["Skin Health", "Skin + Mind", "Research", "Interviews"]
+      - name: icon
+        label: "Little icon for the card"
+        widget: select
+        default: "🧴"
+        options: ["🧴", "🧠", "🔬", "☀️", "📱", "🩺"]
+      - { name: summary, label: "Short description for the card", widget: text }
+      - { name: image, label: "Main photo", widget: image, required: false }
+      - { name: imageAlt, label: "Describe the photo for screen readers", widget: string, required: false }
+      - { name: body, label: "The article", widget: markdown }
+
+  # ---------------------------------------------------------------- skin + mind
+  - name: articles
+    label: "Skin + Mind Articles"
+    label_singular: "Article"
+    folder: "src/articles"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { name: title, label: "Title", widget: string }
+      - { name: date, label: "Date", widget: datetime, format: "YYYY-MM-DD" }
+      - { name: category, label: "Category", widget: hidden, default: "Skin + Mind" }
+      - { name: summary, label: "Short description for the card", widget: text }
+      - { name: image, label: "Main photo", widget: image, required: false }
+      - { name: imageAlt, label: "Describe the photo for screen readers", widget: string, required: false }
+      - { name: body, label: "The article", widget: markdown }
+
+  # ---------------------------------------------------------------- interviews
+  - name: interviews
+    label: "Interviews"
+    label_singular: "Interview"
+    folder: "src/interviews"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { name: title, label: "Their name", widget: string, hint: "For example: Dr. Jane Smith" }
+      - { name: date, label: "Date", widget: datetime, format: "YYYY-MM-DD" }
+      - { name: role, label: "Their job title", widget: string, hint: "For example: Dermatologist" }
+      - { name: quote, label: "One short quote for the card", widget: text }
+      - { name: photo, label: "Their photo", widget: image, required: false }
+      - { name: body, label: "The full interview", widget: markdown }
+
+  # ---------------------------------------------------------------- research spotlights
+  - name: spotlights
+    label: "Research Spotlights"
+    label_singular: "Spotlight"
+    folder: "src/spotlights"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { name: title, label: "Heading", widget: string }
+      - { name: date, label: "Date added", widget: datetime, format: "YYYY-MM-DD" }
+      - { name: question, label: "Research Question", widget: text }
+      - { name: studied, label: "What researchers studied", widget: text }
+      - { name: found, label: "What they found", widget: text }
+      - { name: matters, label: "Why it matters", widget: text }
+      - { name: citation, label: "Citation", widget: text, hint: "Author. Title. Journal, year." }
+      - { name: url, label: "Link to the study", widget: string, required: false }
+
+  # ---------------------------------------------------------------- research library
+  - name: library
+    label: "Research Library"
+    label_singular: "Source"
+    folder: "src/library"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{citation}}"
+    fields:
+      - { name: citation, label: "Citation", widget: text, hint: "Author. Title. Journal, year." }
+      - { name: url, label: "Link to the source", widget: string, required: false }
+      - name: topics
+        label: "Topics"
+        widget: select
+        multiple: true
+        options:
+          - { label: "Acne", value: "acne" }
+          - { label: "Mental Health", value: "mental-health" }
+          - { label: "Dermatology", value: "dermatology" }
+          - { label: "Social Media", value: "social-media" }
+          - { label: "Teen Health", value: "teen-health" }
+
+  # ---------------------------------------------------------------- page text
+  - name: pages
+    label: "Page Text"
+    files:
+      - name: home
+        label: "Home Page"
+        file: "src/_data/pages/home.json"
+        fields:
+          - { name: heroTitle, label: "Big title at the top", widget: string }
+          - { name: heroSub, label: "Sentence under the title", widget: text }
+          - { name: heroImage, label: "Big photo at the top", widget: image, required: false }
+          - { name: heroImageAlt, label: "Describe that photo", widget: string, required: false }
+          - { name: portrait, label: "Your photo", widget: image, required: false }
+          - { name: creatorHeading, label: "Meet the Creator heading", widget: string }
+          - { name: creatorText, label: "Meet the Creator text", widget: text }
+
+      - name: about
+        label: "About Page"
+        file: "src/_data/pages/about.json"
+        fields:
+          - { name: heading, label: "Page heading", widget: string }
+          - { name: intro, label: "Opening paragraph", widget: text }
+          - { name: portrait, label: "Your photo", widget: image, required: false }
+          - name: sections
+            label: "Sections"
+            widget: list
+            fields:
+              - { name: heading, label: "Section heading", widget: string }
+              - { name: text, label: "Section text", widget: text }
+          - name: topics
+            label: "What I'm Exploring tags"
+            widget: list
+            field: { name: tag, label: "Tag", widget: string }
+
+      - name: interviewsPage
+        label: "Interviews Page"
+        file: "src/_data/pages/interviews.json"
+        fields:
+          - { name: contactText, label: "Text above the Get in Touch button", widget: text }
+
+      - name: settings
+        label: "Site Settings"
+        file: "src/_data/site.json"
+        fields:
+          - { name: name, label: "Site name", widget: string }
+          - { name: tagline, label: "Tagline", widget: string }
+          - { name: email, label: "Contact email", widget: string }
+          - { name: year, label: "Year in the footer", widget: string }

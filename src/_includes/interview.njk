@@ -1,0 +1,33 @@
+---
+layout: base.njk
+---
+<section class="section">
+  <div class="wrap">
+    <div class="article">
+      <p class="eyebrow">Expert Voices</p>
+      <h1 class="h-xl">{{ title }}</h1>
+      {% if role %}<p class="lede" style="margin-top:18px">{{ role }}</p>{% endif %}
+      <p class="post-meta" style="margin-top:20px">Interview &#183; {{ date | niceDate }}</p>
+
+      <div style="height:40px"></div>
+
+      {% if photo %}
+      <div class="frame wide" style="margin-bottom:44px">
+        <img src="{{ photo }}" alt="{{ title }}">
+      </div>
+      {% endif %}
+
+      {% if quote %}<blockquote>{{ quote }}</blockquote>{% endif %}
+
+      {{ content | safe }}
+
+      <div class="note">
+        <strong>A note.</strong> This interview has been lightly edited for length and clarity.
+        It reflects the views of the person interviewed and is not medical advice.
+        See our <a href="/disclaimer/">disclaimer</a>.
+      </div>
+
+      <p style="margin-top:38px"><a class="arrow" href="/interviews/">All Interviews &#8594;</a></p>
+    </div>
+  </div>
+</section>

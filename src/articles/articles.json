@@ -1,0 +1,1 @@
+{ "layout": "article.njk", "tags": "articles", "permalink": "/skin-mind/{{ page.fileSlug }}/" }

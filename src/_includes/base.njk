@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if title %}{{ title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
+<meta name="description" content="{% if description %}{{ description }}{% else %}{{ site.tagline }}{% endif %}">
+<meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ site.name }}{% endif %}">
+<meta property="og:description" content="{% if description %}{{ description }}{% else %}{{ site.tagline }}{% endif %}">
+<meta name="theme-color" content="#FCF9F6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="wordmark" href="/">{{ site.name }}</a>
+    <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="menu">
+      <li><a href="/"{% if navKey == "home" %} class="here" aria-current="page"{% endif %}>Home</a></li>
+      <li><a href="/skin-mind/"{% if navKey == "mind" %} class="here" aria-current="page"{% endif %}>Skin + Mind</a></li>
+      <li><a href="/research/"{% if navKey == "research" %} class="here" aria-current="page"{% endif %}>Research</a></li>
+      <li><a href="/interviews/"{% if navKey == "interviews" %} class="here" aria-current="page"{% endif %}>Interviews</a></li>
+      <li><a href="/blog/"{% if navKey == "blog" %} class="here" aria-current="page"{% endif %}>Blog</a></li>
+      <li><a href="/about/"{% if navKey == "about" %} class="here" aria-current="page"{% endif %}>About</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+{{ content | safe }}
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="wordmark" href="/">{{ site.name }}</a>
+        <p>{{ site.tagline }}</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="/skin-mind/">Skin + Mind</a></li>
+          <li><a href="/research/">Research</a></li>
+          <li><a href="/interviews/">Interviews</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Research Library</h4>
+        <ul>
+          <li><a href="/research/#library">Acne</a></li>
+          <li><a href="/research/#library">Mental Health</a></li>
+          <li><a href="/research/#library">Dermatology</a></li>
+          <li><a href="/research/#library">Social Media</a></li>
+          <li><a href="/research/#library">Teen Health</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-end">
+      <span>&copy; {{ site.year }} {{ site.name }}</span>
+      <span class="foot-legal">
+        <a href="/disclaimer/">Disclaimer</a>
+        <a href="/privacy/">Privacy</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b=document.querySelector('.burger'), m=document.getElementById('menu');
+  if(!b||!m) return;
+  b.addEventListener('click',function(){
+    var open=m.classList.toggle('open');
+    b.setAttribute('aria-expanded',open?'true':'false');
+  });
+})();
+(function(){
+  var chips=document.querySelectorAll('.chip');
+  var items=document.querySelectorAll('.lib li');
+  if(!chips.length||!items.length) return;
+  chips.forEach(function(chip){
+    chip.addEventListener('click',function(){
+      var topic=chip.getAttribute('data-topic');
+      chips.forEach(function(c){c.setAttribute('aria-pressed',c===chip?'true':'false');});
+      items.forEach(function(li){
+        var t=li.getAttribute('data-topics')||'';
+        li.hidden=!(topic==='all'||t.indexOf(topic)>-1);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

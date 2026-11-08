@@ -1,0 +1,98 @@
+---
+layout: base.njk
+navKey: research
+title: The Research
+description: Breaking down dermatology research into information teens can actually understand.
+permalink: /research/
+---
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h1 class="display">The Research</h1>
+      <p class="lede" style="margin-top:18px">Breaking down dermatology research into information teens can actually understand.</p>
+    </div>
+
+    <div class="section-head" style="margin-bottom:34px">
+      <h2 class="h-lg">Research Spotlights</h2>
+      <p class="lede" style="margin-top:14px">Each spotlight takes one study and answers the same five questions about it, so you can compare them easily.</p>
+    </div>
+
+    {% set spots = collections.spotlights | newestFirst %}
+    {% if spots %}
+      {% for s in spots %}
+      <article class="spotlight">
+        <p class="eyebrow sage" style="margin-bottom:10px">Spotlight {{ loop.index }}</p>
+        <h3 class="h-md">{{ s.data.title }}</h3>
+        <div class="row">
+          <div class="lab">Research Question</div>
+          <p class="val">{{ s.data.question }}</p>
+        </div>
+        <div class="row">
+          <div class="lab">What researchers studied</div>
+          <p class="val">{{ s.data.studied }}</p>
+        </div>
+        <div class="row">
+          <div class="lab">What they found</div>
+          <p class="val">{{ s.data.found }}</p>
+        </div>
+        <div class="row">
+          <div class="lab">Why it matters</div>
+          <p class="val">{{ s.data.matters }}</p>
+        </div>
+        <div class="row">
+          <div class="lab">Sources</div>
+          <div>
+            <p class="cite">{{ s.data.citation }}
+            {% if s.data.url %}<a href="{{ s.data.url }}" target="_blank" rel="noopener">Link</a>{% endif %}</p>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    {% else %}
+      <div class="empty"><p>No research spotlights yet. Add one in the admin area under Research Spotlights.</p></div>
+    {% endif %}
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="section tight" id="library">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:30px">
+      <h2 class="h-lg">Research Library</h2>
+      <p class="lede" style="margin-top:14px">Every study and article used anywhere on this site, in one list. Tap a topic to narrow it down.</p>
+    </div>
+
+    <ul class="chips">
+      <li><button class="chip" data-topic="all" aria-pressed="true">All</button></li>
+      <li><button class="chip" data-topic="acne" aria-pressed="false">Acne</button></li>
+      <li><button class="chip" data-topic="mental-health" aria-pressed="false">Mental Health</button></li>
+      <li><button class="chip" data-topic="dermatology" aria-pressed="false">Dermatology</button></li>
+      <li><button class="chip" data-topic="social-media" aria-pressed="false">Social Media</button></li>
+      <li><button class="chip" data-topic="teen-health" aria-pressed="false">Teen Health</button></li>
+    </ul>
+
+    {% set sources = collections.library %}
+    {% if sources %}
+    <ul class="lib">
+      {% for s in sources %}
+      <li data-topics="{{ s.data.topics | join(' ') }}">
+        <p class="src">{{ s.data.citation }}
+        {% if s.data.url %}<a href="{{ s.data.url }}" target="_blank" rel="noopener">Link</a>{% endif %}</p>
+        <div class="topics">
+          {% for t in s.data.topics %}
+            {% if t == "acne" %}<span>Acne</span>{% endif %}
+            {% if t == "mental-health" %}<span>Mental Health</span>{% endif %}
+            {% if t == "dermatology" %}<span>Dermatology</span>{% endif %}
+            {% if t == "social-media" %}<span>Social Media</span>{% endif %}
+            {% if t == "teen-health" %}<span>Teen Health</span>{% endif %}
+          {% endfor %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <div class="empty"><p>No sources yet. Add them in the admin area under Research Library.</p></div>
+    {% endif %}
+  </div>
+</section>

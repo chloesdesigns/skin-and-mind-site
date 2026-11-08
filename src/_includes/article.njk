@@ -1,0 +1,34 @@
+---
+layout: base.njk
+---
+<section class="section">
+  <div class="wrap">
+    <div class="article">
+      {% if category %}<p class="eyebrow">{{ category }}</p>{% endif %}
+      <h1 class="h-xl">{{ title }}</h1>
+      {% if summary %}<p class="lede" style="margin-top:18px">{{ summary }}</p>{% endif %}
+      <p class="post-meta" style="margin-top:20px">
+        {% if category %}{{ category }} &#183; {% endif %}{{ date | niceDate }}
+      </p>
+
+      <div style="height:40px"></div>
+
+      {% if image %}
+      <div class="frame wide" style="margin-bottom:44px">
+        <img src="{{ image }}" alt="{% if imageAlt %}{{ imageAlt }}{% else %}{{ title }}{% endif %}">
+      </div>
+      {% endif %}
+
+      {{ content | safe }}
+
+      <div class="note">
+        <strong>A note.</strong> This article is for education and is not medical advice.
+        If something about your skin or your mood is worrying you, talk to a doctor,
+        a school counsellor or an adult you trust. More on our
+        <a href="/disclaimer/">disclaimer page</a>.
+      </div>
+
+      <p style="margin-top:38px"><a class="arrow" href="/research/#library">Research Library &#8594;</a></p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+---
+layout: base.njk
+navKey: interviews
+title: Expert Voices
+description: Conversations with professionals about skin, science, and mental well-being.
+permalink: /interviews/
+---
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h1 class="display">Expert Voices</h1>
+      <p class="lede" style="margin-top:18px">Conversations with professionals about skin, science, and mental well&#8209;being.</p>
+    </div>
+
+    {% set items = collections.interviewPosts | newestFirst %}
+    {% if items %}
+    <div class="interviews">
+      {% for item in items %}
+      <article class="interview{% if loop.index0 % 2 == 1 %} flip{% endif %}">
+        <div class="frame">
+          {% if item.data.photo %}
+          <img src="{{ item.data.photo }}" alt="{{ item.data.title }}">
+          {% else %}
+          <svg viewBox="0 0 300 300" role="img" aria-label="Placeholder portrait">
+            <rect width="300" height="300" fill="#F3DDD5"/>
+            <g font-family="Montserrat, sans-serif" font-size="9" letter-spacing="4" fill="#2E2724" opacity=".4"><text x="106" y="156">PHOTO</text></g>
+          </svg>
+          {% endif %}
+        </div>
+        <div class="body">
+          <p class="eyebrow sage">In conversation with</p>
+          <h3>{{ item.data.title }}</h3>
+          <p class="role">{{ item.data.role }}</p>
+          {% if item.data.quote %}<p class="pull">&#8220;{{ item.data.quote }}&#8221;</p>{% endif %}
+          <p><a class="arrow" href="{{ item.url }}">Read the Interview &#8594;</a></p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty"><p>No interviews yet. Add one in the admin area under Interviews.</p></div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section blush tight">
+  <div class="wrap narrow" style="text-align:center">
+    <h2 class="h-lg">Want to be interviewed?</h2>
+    <p class="lede" style="margin:16px auto 26px">{{ pages.interviews.contactText }}</p>
+    <p><a class="btn" href="mailto:{{ site.email }}">Get in Touch</a></p>
+  </div>
+</section>

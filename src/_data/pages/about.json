@@ -1,0 +1,13 @@
+{
+  "heading": "Why I Created the Skin and Mind Project",
+  "intro": "[Open with why you started this project. A few sentences.]",
+  "portrait": "",
+  "sections": [
+    { "heading": "My interest in dermatology", "text": "[Write this section.]" },
+    { "heading": "Why I became interested in the skin + mental health connection", "text": "[Write this section.]" },
+    { "heading": "What I hope teens learn", "text": "[Write this section.]" },
+    { "heading": "What I plan to research", "text": "[Write this section.]" },
+    { "heading": "How this project will grow", "text": "[Write this section.]" }
+  ],
+  "topics": ["Dermatology", "Teen Skin Health", "Mental Well-Being", "Medical Research", "Expert Perspectives"]
+}

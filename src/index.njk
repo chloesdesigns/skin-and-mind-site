@@ -1,0 +1,107 @@
+---
+layout: base.njk
+navKey: home
+permalink: /
+---
+{% set home = pages.home %}
+{% set featured = collections.posts | newestFirst | first %}
+
+<section class="hero">
+  <div class="wrap">
+    <h1 class="display">{{ home.heroTitle }}</h1>
+    <p class="hero-sub">{{ home.heroSub }}</p>
+    <div class="pips">
+      <span>Research</span><i></i><span>Expert Perspectives</span><i></i><span>Teen Voices</span>
+    </div>
+
+    <div class="hero-figure">
+      <div class="frame wide">
+        {% if home.heroImage %}
+        <img src="{{ home.heroImage }}" alt="{{ home.heroImageAlt }}">
+        {% else %}
+        <svg viewBox="0 0 1100 480" role="img" aria-label="Placeholder image">
+          <rect width="1100" height="480" fill="#FAF1ED"/>
+          <g font-family="Montserrat, sans-serif" font-size="11" letter-spacing="4" fill="#2E2724" opacity=".38">
+            <text x="470" y="245">ADD A PHOTO</text>
+          </g>
+        </svg>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2 class="h-xl">Explore the Project</h2></div>
+    <div class="boxes">
+      <a class="box" href="/skin-mind/">
+        <span class="ic">&#129378;</span>
+        <h3>Skin Health</h3>
+        <p>Learn about common skin conditions and the science behind them.</p>
+      </a>
+      <a class="box" href="/skin-mind/">
+        <span class="ic">&#129504;</span>
+        <h3>Skin + Mind</h3>
+        <p>Explore how skin health can connect with confidence and mental well&#8209;being.</p>
+      </a>
+      <a class="box" href="/research/">
+        <span class="ic">&#128300;</span>
+        <h3>Research</h3>
+        <p>Discover what scientists and researchers have found.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% if featured %}
+<section class="section paper">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow sage">Featured Article</p></div>
+    <article class="featured">
+      <div class="frame">
+        {% if featured.data.image %}
+        <img src="{{ featured.data.image }}" alt="{{ featured.data.title }}">
+        {% else %}
+        <svg viewBox="0 0 520 400" role="img" aria-label="Placeholder image">
+          <rect width="520" height="400" fill="#FAF1ED"/>
+          <g font-family="Montserrat, sans-serif" font-size="10" letter-spacing="4" fill="#2E2724" opacity=".38">
+            <text x="196" y="205">ARTICLE IMAGE</text>
+          </g>
+        </svg>
+        {% endif %}
+      </div>
+      <div class="featured-body">
+        <h3 class="h-lg">{{ featured.data.title }}</h3>
+        <p class="lede">{{ featured.data.summary }}</p>
+        <p style="margin:24px 0 0"><a class="arrow" href="{{ featured.url }}">Read Article &#8594;</a></p>
+      </div>
+    </article>
+  </div>
+</section>
+{% endif %}
+
+<section class="section blush">
+  <div class="wrap">
+    <div class="split">
+      <div class="frame portrait">
+        {% if home.portrait %}
+        <img src="{{ home.portrait }}" alt="Portrait">
+        {% else %}
+        <svg viewBox="0 0 400 500" role="img" aria-label="Placeholder portrait">
+          <rect width="400" height="500" fill="#F3DDD5"/>
+          <g font-family="Montserrat, sans-serif" font-size="10" letter-spacing="4" fill="#2E2724" opacity=".4">
+            <text x="126" y="256">ADD A PHOTO</text>
+          </g>
+        </svg>
+        {% endif %}
+      </div>
+      <div>
+        <p class="eyebrow">Meet the Creator</p>
+        <h2 class="h-lg">{{ home.creatorHeading }}</h2>
+        <p class="lede" style="margin-top:20px">{{ home.creatorText }}</p>
+        <p style="margin:24px 0 0"><a class="arrow" href="/about/">More About Me &#8594;</a></p>
+      </div>
+    </div>
+  </div>
+</section>
