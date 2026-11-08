@@ -8,8 +8,8 @@ permalink: /interviews/
 <section class="section">
   <div class="wrap">
     <div class="section-head">
-      <h1 class="display">Expert Voices</h1>
-      <p class="lede" style="margin-top:18px">Conversations with professionals about skin, science, and mental well&#8209;being.</p>
+      <h1 class="display">{{ pages.interviews.heading }}</h1>
+      <p class="lede" style="margin-top:18px">{{ pages.interviews.sub }}</p>
     </div>
 
     {% set items = collections.interviewPosts | newestFirst %}
@@ -45,7 +45,7 @@ permalink: /interviews/
 
 <section class="section blush tight">
   <div class="wrap narrow" style="text-align:center">
-    <h2 class="h-lg">Want to be interviewed?</h2>
+    <h2 class="h-lg">{{ pages.interviews.contactHeading }}</h2>
     <p class="lede" style="margin:16px auto 26px">{{ pages.interviews.contactText }}</p>
     <p><a class="btn" href="mailto:{{ site.email }}">Get in Touch</a></p>
   </div>

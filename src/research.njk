@@ -8,13 +8,13 @@ permalink: /research/
 <section class="section">
   <div class="wrap">
     <div class="section-head">
-      <h1 class="display">The Research</h1>
-      <p class="lede" style="margin-top:18px">Breaking down dermatology research into information teens can actually understand.</p>
+      <h1 class="display">{{ pages.research.heading }}</h1>
+      <p class="lede" style="margin-top:18px">{{ pages.research.sub }}</p>
     </div>
 
     <div class="section-head" style="margin-bottom:34px">
-      <h2 class="h-lg">Research Spotlights</h2>
-      <p class="lede" style="margin-top:14px">Each spotlight takes one study and answers the same five questions about it, so you can compare them easily.</p>
+      <h2 class="h-lg">{{ pages.research.spotlightHeading }}</h2>
+      <p class="lede" style="margin-top:14px">{{ pages.research.spotlightIntro }}</p>
     </div>
 
     {% set spots = collections.spotlights | newestFirst %}
@@ -59,8 +59,8 @@ permalink: /research/
 <section class="section tight" id="library">
   <div class="wrap">
     <div class="section-head" style="margin-bottom:30px">
-      <h2 class="h-lg">Research Library</h2>
-      <p class="lede" style="margin-top:14px">Every study and article used anywhere on this site, in one list. Tap a topic to narrow it down.</p>
+      <h2 class="h-lg">{{ pages.research.libraryHeading }}</h2>
+      <p class="lede" style="margin-top:14px">{{ pages.research.libraryIntro }}</p>
     </div>
 
     <ul class="chips">

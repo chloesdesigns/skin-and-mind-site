@@ -119,6 +119,19 @@ collections:
           - { name: heroSub, label: "Sentence under the title", widget: text }
           - { name: heroImage, label: "Big photo at the top", widget: image, required: false }
           - { name: heroImageAlt, label: "Describe that photo", widget: string, required: false }
+          - name: pips
+            label: "Small words under the title"
+            widget: list
+            field: { name: word, label: "Word", widget: string }
+          - { name: exploreHeading, label: "Explore the Project heading", widget: string }
+          - name: boxes
+            label: "Explore the Project boxes"
+            widget: list
+            fields:
+              - { name: icon, label: "Emoji", widget: string }
+              - { name: title, label: "Box title", widget: string }
+              - { name: text, label: "Box text", widget: text }
+              - { name: link, label: "Goes to page", widget: select, options: ["/skin-mind/", "/research/", "/blog/", "/interviews/", "/about/"] }
           - { name: portrait, label: "Your photo", widget: image, required: false }
           - { name: creatorHeading, label: "Meet the Creator heading", widget: string }
           - { name: creatorText, label: "Meet the Creator text", widget: text }
@@ -141,10 +154,38 @@ collections:
             widget: list
             field: { name: tag, label: "Tag", widget: string }
 
+      - name: skinmindPage
+        label: "Skin + Mind Page"
+        file: "src/_data/pages/skinmind.json"
+        fields:
+          - { name: heading, label: "Page heading", widget: string }
+          - { name: sub, label: "Sentence under the heading", widget: text }
+
+      - name: researchPage
+        label: "Research Page"
+        file: "src/_data/pages/research.json"
+        fields:
+          - { name: heading, label: "Page heading", widget: string }
+          - { name: sub, label: "Sentence under the heading", widget: text }
+          - { name: spotlightHeading, label: "Spotlights section heading", widget: string }
+          - { name: spotlightIntro, label: "Spotlights section intro", widget: text }
+          - { name: libraryHeading, label: "Library section heading", widget: string }
+          - { name: libraryIntro, label: "Library section intro", widget: text }
+
+      - name: blogPage
+        label: "Blog Page"
+        file: "src/_data/pages/blog.json"
+        fields:
+          - { name: heading, label: "Page heading", widget: string }
+          - { name: sub, label: "Sentence under the heading", widget: text }
+
       - name: interviewsPage
         label: "Interviews Page"
         file: "src/_data/pages/interviews.json"
         fields:
+          - { name: heading, label: "Page heading", widget: string }
+          - { name: sub, label: "Sentence under the heading", widget: text }
+          - { name: contactHeading, label: "Get in Touch heading", widget: string }
           - { name: contactText, label: "Text above the Get in Touch button", widget: text }
 
       - name: settings

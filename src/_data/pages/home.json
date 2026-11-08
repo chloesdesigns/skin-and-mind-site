@@ -5,5 +5,31 @@
   "heroImageAlt": "",
   "portrait": "",
   "creatorHeading": "[Your headline goes here]",
-  "creatorText": "[A short section about you and why you created this project. Two or three sentences. The longer version goes on the About page.]"
+  "creatorText": "[A short section about you and why you created this project. Two or three sentences. The longer version goes on the About page.]",
+  "pips": [
+    "Research",
+    "Expert Perspectives",
+    "Teen Voices"
+  ],
+  "exploreHeading": "Explore the Project",
+  "boxes": [
+    {
+      "icon": "🧴",
+      "title": "Skin Health",
+      "text": "Learn about common skin conditions and the science behind them.",
+      "link": "/skin-mind/"
+    },
+    {
+      "icon": "🧠",
+      "title": "Skin + Mind",
+      "text": "Explore how skin health can connect with confidence and mental well-being.",
+      "link": "/skin-mind/"
+    },
+    {
+      "icon": "🔬",
+      "title": "Research",
+      "text": "Discover what scientists and researchers have found.",
+      "link": "/research/"
+    }
+  ]
 }

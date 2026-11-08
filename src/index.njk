@@ -11,7 +11,7 @@ permalink: /
     <h1 class="display">{{ home.heroTitle }}</h1>
     <p class="hero-sub">{{ home.heroSub }}</p>
     <div class="pips">
-      <span>Research</span><i></i><span>Expert Perspectives</span><i></i><span>Teen Voices</span>
+      {% for p in home.pips %}{% if not loop.first %}<i></i>{% endif %}<span>{{ p }}</span>{% endfor %}
     </div>
 
     <div class="hero-figure">
@@ -33,23 +33,15 @@ permalink: /
 
 <section class="section">
   <div class="wrap">
-    <div class="section-head"><h2 class="h-xl">Explore the Project</h2></div>
+    <div class="section-head"><h2 class="h-xl">{{ home.exploreHeading }}</h2></div>
     <div class="boxes">
-      <a class="box" href="/skin-mind/">
-        <span class="ic">&#129378;</span>
-        <h3>Skin Health</h3>
-        <p>Learn about common skin conditions and the science behind them.</p>
+      {% for b in home.boxes %}
+      <a class="box" href="{{ b.link }}">
+        <span class="ic">{{ b.icon }}</span>
+        <h3>{{ b.title }}</h3>
+        <p>{{ b.text }}</p>
       </a>
-      <a class="box" href="/skin-mind/">
-        <span class="ic">&#129504;</span>
-        <h3>Skin + Mind</h3>
-        <p>Explore how skin health can connect with confidence and mental well&#8209;being.</p>
-      </a>
-      <a class="box" href="/research/">
-        <span class="ic">&#128300;</span>
-        <h3>Research</h3>
-        <p>Discover what scientists and researchers have found.</p>
-      </a>
+      {% endfor %}
     </div>
   </div>
 </section>

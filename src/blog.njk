@@ -8,8 +8,8 @@ permalink: /blog/
 <section class="section">
   <div class="wrap">
     <div class="section-head">
-      <h1 class="display">The Blog</h1>
-      <p class="lede" style="margin-top:18px">Thoughts, research, interviews, and conversations about skin health.</p>
+      <h1 class="display">{{ pages.blog.heading }}</h1>
+      <p class="lede" style="margin-top:18px">{{ pages.blog.sub }}</p>
     </div>
 
     {% set items = collections.posts | newestFirst %}
